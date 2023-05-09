@@ -10,7 +10,7 @@
 $ docker compose up -d
 ```
 
-3. Start to create Neo4j nodes
+3. Wait a while to the containers be ready(about 1 minute) and start to create the Neo4j nodejs by running the following command
 
 ```bash
 $ docker exec -it nodejs-to-neo4j bash -c "npm run start"
