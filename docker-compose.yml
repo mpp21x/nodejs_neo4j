@@ -31,6 +31,8 @@ services:
     command: sh -c "./development.sh"
     networks:
       - neo4j
+    depends_on:
+      - test-neo4j
 
 networks:
   neo4j:
