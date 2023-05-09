@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  test-neo4j:
+    image: neo4j:5-community
+    hostname: test-neo4j
+    container_name: test-neo4j
+    environment:
+      NEO4J_AUTH: neo4j/nodejs_to_neo4j
+    volumes:
+      - ./data:/data
+    networks:
+      - neo4j
+    ports:
+      - 7474:7474
+      - 7687:7687
+
+  nodejs-to-neo4j:
+    image: node:18
+    hostname: nodejs-to-neo4j
+    container_name: nodejs-to-neo4j
+    environment:
+      - NEO4J_HOST
+      - NEO4J_PORT
+      - NEO4J_USER
+      - NEO4J_PASSWORD
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    user: root
+    command: sh -c "./development.sh"
+    networks:
+      - neo4j
+
+networks:
+  neo4j:
+    name: neo4j
