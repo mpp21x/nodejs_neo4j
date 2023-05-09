@@ -1,5 +1,4 @@
 const neo4j = require('neo4j-driver')
-const {session} = require("neo4j-driver");
 
 const url = `neo4j://test-neo4j:7687`;
 
